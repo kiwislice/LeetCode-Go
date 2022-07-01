@@ -3,10 +3,16 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
-	makeQuestionDir(os.Args[1])
+	switch os.Args[1] {
+	case "newDir":
+		makeQuestionDir(os.Args[2])
+	case "replaceArray":
+		replaceArray(os.Args[2])
+	}
 }
 
 func makeQuestionDir(qNumber string) {
@@ -22,16 +28,21 @@ func makeQuestionDir(qNumber string) {
 	testText := `package leetcode
 
 	import (
+		"fmt"
 		"testing"
 	
 		"github.com/stretchr/testify/assert"
 	)
 	
 	func Test_Q` + questionNum + `(t *testing.T) {
+		fmt.Println("test start.")
 		assert := assert.New(t)
+		var result any
 	
-		// result := countBits(2)
+		// result = countBits(2)
 		// assert.Equal([]int{0, 1, 1}, result)
+		
+		fmt.Println("test finished.")
 	}
 	`
 	createFile(testPath, testText)
@@ -45,4 +56,10 @@ func createFile(filepath, text string) {
 	}
 	defer fout.Close()
 	fout.WriteString(text)
+}
+
+func replaceArray(text string) {
+	text = strings.ReplaceAll(text, "[", "{")
+	text = strings.ReplaceAll(text, "]", "}")
+	fmt.Println(text)
 }
