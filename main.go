@@ -44,6 +44,18 @@ func makeQuestionDir(qNumber string) {
 		
 		fmt.Println("test finished.")
 	}
+	
+	/** https://www.practical-go-lessons.com/chap-34-benchmarks */
+	// var benchmarkResult any
+
+	// func BenchmarkAnything(b *testing.B) {
+	// 	var s any
+	// 	for i := 0; i < b.N; i++ {
+	// 		s = countBits(2)
+	// 	}
+	// 	benchmarkResult = s
+	// }
+
 	`
 	createFile(testPath, testText)
 }
