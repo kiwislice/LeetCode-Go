@@ -41,3 +41,15 @@ func Test_Int2Array(t *testing.T) {
 
 	fmt.Println("test complete.")
 }
+
+func Test_ReadJsonFile_Map(t *testing.T) {
+	assert := assert.New(t)
+	var result map[string]any
+
+	result = ReadJsonFile_Map("0851/test1.json")
+	fmt.Println(ToInt1d(result["quiet"]))
+	fmt.Println(ToInt2d(result["richer"]))
+
+	assert.True(true)
+	fmt.Println("test complete.")
+}
